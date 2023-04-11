@@ -1,27 +1,39 @@
-const initialState = {
-  favourites: {
+const InitialState = {
+  meteo: {
+    content: null,
+  },
+  meteoSettimana: {
+    content: null,
+  },
+  luogo: {
     content: [],
   },
 };
-
-const mainReducer = (state = initialState, action) => {
+const mainReducer = (state = InitialState, action) => {
   switch (action.type) {
-    case "ADD_TO_FAVOURITES":
+    case "METEO_NOW":
       return {
         ...state,
-        favourites: {
-          ...state.favourites,
-          content: [...state.favourites.content, action.payload],
+        meteo: {
+          ...state.meteo,
+          content: action.payload,
         },
       };
-    case "REMOVE_FROM_FAVOURITES":
+    case "WEEK_METEO":
       return {
         ...state,
-        favourites: {
-          ...state.favourites,
-          content: state.favourites.content.filter(
-            (_, i) => i !== action.payload
-          ),
+        meteoSettimana: {
+          ...state.meteoSettimana,
+          content: action.payload,
+        },
+      };
+
+    case "SEARCH_CITY":
+      return {
+        ...state,
+        luogo: {
+          ...state.luogo,
+          content: action.payload,
         },
       };
     default:

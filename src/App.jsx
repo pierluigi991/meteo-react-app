@@ -1,16 +1,17 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Row } from "react-bootstrap";
-import MyNav from "./components/MyNav";
-import Search from "./components/Search";
+import Home from "./components/Home";
+import Meteo from "./components/Meteo";
 
 function App() {
   return (
-    <div className="App">
-      <Row>
-        <MyNav />
-        <Search />
-      </Row>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/meteo" element={<Meteo />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
